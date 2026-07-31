@@ -1,0 +1,94 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "memory",
+    "disk",
+    "cpu"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "custom/mullvad",
+    "network",
+    "battery",
+    "custom/bluetooth"
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "on-click": "activate",
+    "sort-by-number": true
+  },
+
+  "disk": {
+    "format": "󰋊 {percentage_used}%",
+    "path": "/",
+    "interval": 30,
+    "tooltip-format": "{used} usados de {total} ({path})"
+  },
+
+  "cpu": {
+    "format": "󰘚 {usage}%",
+    "interval": 3,
+    "tooltip-format": "{avg_frequency} GHz"
+  },
+
+  "memory": {
+    "format": "RAM {percentage}%",
+    "interval": 5,
+    "tooltip-format": "{used:0.1f}G usados de {total:0.1f}G"
+  },
+
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "format-alt": "󰃰 {:%d/%m/%Y}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 60
+  },
+
+  "network": {
+    "format": "󰤭 Sin red",
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 {ifname}",
+    "tooltip-format": "{ifname}: {ipaddr}\nSeñal: {signalStrength}%",
+    "tooltip": true,
+    "on-click": "networkmanager_dmenu"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "tooltip-format": "{timeTo}"
+  },
+
+  "custom/mullvad": {
+    "exec": "~/.config/waybar/scripts/mullvad-status.sh",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "mullvad connect",
+    "on-click-right": "mullvad disconnect",
+    "tooltip": true
+  },
+
+  "custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth-blueman.sh",
+    "return-type": "json",
+    "interval": 3,
+    "on-click": "blueman-manager",
+    "tooltip": true
+  }
+}

@@ -1,0 +1,166 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    border: none;
+}
+
+/* Base para todos los módulos */
+#workspaces,
+#cpu,
+#memory,
+#disk,
+#clock,
+#network,
+#battery,
+#custom-bluetooth {
+    background-color: rgba(24, 24, 37, 0.88);
+    color: #cdd6f4;
+    padding: 4px 14px;
+    margin: 5px 3px;
+    border-radius: 14px;
+    font-weight: 500;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+    padding: 4px 6px;
+}
+
+#workspaces button {
+    padding: 0 7px;
+    background-color: transparent;
+    color: #585b70;
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+    min-width: 20px;
+    transition: all 0.15s ease;
+}
+
+#workspaces button.active {
+    color: #cdd6f4;
+    background-color: rgba(205, 214, 244, 0.12);
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+    background-color: rgba(243, 139, 168, 0.18);
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+}
+
+/* ── Memoria ── */
+#memory {
+    color: #cba6f7;
+}
+
+/* ── CPU ── */
+#cpu {
+    color: #89b4fa;
+}
+
+/* ── Disco ── */
+#disk {
+    color: #f9e2af;
+}
+
+/* ── Reloj ── */
+#clock {
+    color: #cdd6f4;
+    font-weight: 600;
+}
+
+#clock:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Red ── */
+#network {
+    color: #89dceb;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+/* ── Batería ── */
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.6s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #a6e3a1;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0.4;
+    }
+}
+
+/* ── Mullvad VPN ── */
+#custom-mullvad {
+    background-color: rgba(24, 24, 37, 0.88);
+    color: #585b70;
+    padding: 4px 14px;
+    margin: 5px 3px;
+    border-radius: 14px;
+    font-weight: 500;
+}
+
+#custom-mullvad.connected {
+    color: #a6e3a1;
+}
+
+#custom-mullvad.connecting {
+    color: #f9e2af;
+    animation-name: blink;
+    animation-duration: 0.8s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-mullvad.disconnected {
+    color: #585b70;
+}
+
+/* ── Bluetooth ── */
+#custom-bluetooth {
+    padding: 4px 12px;
+    font-size: 15px;
+}
+
+#custom-bluetooth.connected {
+    color: #89b4fa;
+}
+
+#custom-bluetooth.enabled {
+    color: #74c7ec;
+}
+
+#custom-bluetooth.disabled {
+    color: #585b70;
+}
